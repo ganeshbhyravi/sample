@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.arisglobal.aglite.mobile"
+        versionCode="10"
+        version   = "0.0.1">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>AgClinical</name>
+
+    <description>
+        AgClinical Sample Mobile Offline Application
+    </description>
+
+    <author href="" email="ccoenraets@gmail.com">
+        Christophe Coenraets
+    </author>
+	<preference name="fullscreen" value="true" />
+	<preference name="exit-on-suspend" value="true" />
+	<icon src="./images/logo.png" gap:platform="android" gap:density="ldpi" />
+</widget>
