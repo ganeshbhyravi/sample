@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html> 
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/jquery-mobile.css" />
+	<link rel="stylesheet" type="text/css" href="../css/aglite-mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/application-mobile.css" />
+
+     <script type="text/javascript" src="../js/lib/jquery.js"></script>
+     <script type="text/javascript" src="../js/lib/jquery-mobile.js"></script>
+     <script type="text/javascript" src="../js/lib/aglite-mobile-base.js"></script>
+     <script type="text/javascript" src="../js/lib/datenumbervalidation.js"></script>
+	 <script type="text/javascript" src="../js/aglite-mobile-offline.js"></script>
+	 <script src="../js/main.js"></script>
+
+	<script>
+		var platformVersion = AgClinicalMobileUtil.platformVersion;
+		var pageOwnerVersion = AgClinicalMobileUtil.version;
+		var contextPath = AgClinicalMobileUtil.contextPath;
+		var currentMenu = "home";
+		var prevMenus = [];
+		var userDateFormat = 'n/j/y';
+        var userDateTimeSeparator = ' ';
+        var userNumberFormat = '0,000.00';
+        var userTimeFormat = 'g:i A';
+		jQuery.support.cors = true;
+		jQuery.ajaxSetup ({
+            cache: true
+        });
+		$ ( document ).bind( "pageinit", function(e) {
+			if (AgClinicalMobileUtil.isNotValidPageForEvents(e)) {
+				return;
+			}
+			aglite.Mobile.EventManager.fire("pageinit",[$(e.target)]);
+			/*if (e.target.id == 'login') {
+				aglite.Mobile.goToLoginPage();
+				return;
+			}*/
+			//aglite.Main.showHomePage();
+			//$(e.target).find('#' + pageEncodeVersion + ' a').each(aglite.Mobile.addLink);
+			//aglite.Mobile.createLink($(e.target));
+			aglite.Mobile.setTitle($(e.target), document.title);
+		}).bind("mobileinit", function(){
+		  jQuery.mobile.touchOverflowEnabled = true;
+		  $.mobile.allowCrossDomainPages = true;
+		}).bind("pageshow", function(e){
+			if (AgClinicalMobileUtil.isNotValidPageForEvents(e)) {
+				return;
+			}
+			var page = $(e.target);
+			AgClinicalMobileUtil.attachOptionWindow(page)
+			aglite.Mobile.EventManager.fire("pageshow",[page]);
+			aglite.Mobile.setContentHeight(page);
+			AgClinicalMobileUtil.populateSiteDetails();
+		});
+		$ ( document ).bind('pageloaderror', aglite.Mobile.handleError);
+		aglite.Mobile.hideWindows();
+	</script>
+	
+	</head> 
+<body> 
+<div data-role="page" id="aglite_3__1__1__25" data-theme="d" data-pageName="">
+		<script>
+		var mobileReqKey = "mobile";
+		var recordId = "";
+		pageOwnerVersion = AgClinicalMobileUtil.version;
+		var pageEncodeVersion =  AgClinicalMobileUtil.encodeVersion ;
+		var menuName = "home";
+		var pageName =  "$pageName" ;
+		prevMenus = [];
+		document.title = '';
+	</script>
+	<div data-role="header" data-position="fixed" data-theme="b" style="min-height:34px;">
+		<h1>
+			agClinical
+		</h1>
+		<div style="float:right;padding-right:4px;position:absolute;top:2px;right:5px;">
+			<a href="javascript:void(0);"><img title="Options" id="settingsBt" class="agl-mobile-options" src="../images/s.gif" /></a>
+		</div>
+		<!--<div style="text-align:center;">
+			<label>agClinical</label>
+		</div>-->
+		<div style="text-align: center;float:left;position:absolute;top:2px;">
+			<a href="./home.html" data-ajax="false"><img title="Home" id="agl-mobile-home" class="agl-mobile-home" src="../images/s.gif"/></a>
+		</div>
+	</div>
+	<div data-role="content" id="main-base">
+		<div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" id="sitelist">
+		<h3>Edit Site Details</h3>
+		<center>
+			<table width= "90%" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+				<tr>
+					<td class="form-label">Program Name:</td>
+					<td class="form-field-val" id="programName"></td>
+				</tr>
+				<tr>
+					<td class="form-label">Study Title:</td>
+					<td class="form-field-val" id="studyTitle"></td>
+				</tr>
+				<tr>
+					<td class="form-label">Country Name:</td>
+					<td class="form-field-val" id="countryName"></td>
+				</tr>
+				<tr>
+					<td class="form-label">Site Name:</td>
+					<td class="form-field-val" id="siteName"></td>
+				</tr>
+				<tr>
+					<td class="form-label">Site Status:</td>
+					<td class="form-field-val" id="siteStatus"></td>
+				</tr>
+				<tr>
+					<td class="form-label">Site Title</td>
+					<td class="form-field-val"><input type="text" name="name" id="siteTitle" value="" data-mini="true" /></td>
+				</tr>
+				<tr>
+					<td class="form-label">Site Description</td>
+					<td class="form-field-val"><textarea cols="40" rows="8" name="textarea" id="siteDescription" data-mini="true"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a data-role="button" data-theme="b" data-inline="true" class="ag-btn" href="javascript:void(0);" id="downloadbtn"  onclick = "AgClinicalMobileUtil.saveSiteDetails()">Save</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a data-role="button" data-theme="b" data-inline="true" class="ag-btn" href="javascript:void(0);" id="downloadbtn"  onclick = "AgClinicalMobileUtil.showSiteListPage()">Cancel</a></td>
+				</tr>
+			</table>
+		</center>
+		</div>
+	</div><!-- /content -->
+	<div data-role="footer" data-position="fixed" data-theme="b" id="ag-footer">
+	</div><!-- /footer -->
+</div>
+</body>
+</html>

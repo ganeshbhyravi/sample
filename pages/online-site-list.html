@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html> 
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/jquery-mobile.css" />
+	<link rel="stylesheet" type="text/css" href="../css/aglite-mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/application-mobile.css" />
+
+     <script type="text/javascript" src="../js/lib/jquery.js"></script>
+     <script type="text/javascript" src="../js/lib/jquery-mobile.js"></script>
+     <script type="text/javascript" src="../js/lib/aglite-mobile-base.js"></script>
+     <script type="text/javascript" src="../js/lib/datenumbervalidation.js"></script>
+	 <script type="text/javascript" src="../js/aglite-mobile-offline.js"></script>
+	 <script src="../js/main.js"></script>
+
+	<script>
+		var platformVersion = AgClinicalMobileUtil.platformVersion;
+		var pageOwnerVersion = AgClinicalMobileUtil.version;
+		var contextPath = AgClinicalMobileUtil.contextPath;
+		var currentMenu = "home";
+		var prevMenus = [];
+		var userDateFormat = 'n/j/y';
+        var userDateTimeSeparator = ' ';
+        var userNumberFormat = '0,000.00';
+        var userTimeFormat = 'g:i A';
+		var pageInit = false;
+		var pageShow = false;
+		jQuery.support.cors = true;
+		jQuery.ajaxSetup ({
+            cache: true
+        });
+		$ ( document ).bind( "pageinit", function(e) {
+			if (pageInit || AgClinicalMobileUtil.isNotValidPageForEvents(e)) {
+				return;
+			}
+			pageInit = true;
+			aglite.Mobile.EventManager.fire("pageinit",[$(e.target)]);
+			/*if (e.target.id == 'login') {
+				aglite.Mobile.goToLoginPage();
+				return;
+			}*/
+			//aglite.Main.showHomePage();
+			//$(e.target).find('#' + pageEncodeVersion + ' a').each(aglite.Mobile.addLink);
+			//AgClinicalMobileUtil.showSiteList();
+			//aglite.Mobile.createLink($(e.target));
+			aglite.Mobile.setTitle($(e.target), document.title);
+		}).bind("mobileinit", function(){
+		  jQuery.mobile.touchOverflowEnabled = true;
+		  $.mobile.allowCrossDomainPages = true;
+		}).bind("pageshow", function(e){
+			if (pageShow || AgClinicalMobileUtil.isNotValidPageForEvents(e)) {
+				return;
+			}
+			pageShow = true;
+			var page = $(e.target);
+			aglite.Mobile.EventManager.fire("pageshow",[page]);
+			AgClinicalMobileUtil.attachOptionWindow(page)
+			aglite.Mobile.setContentHeight(page);
+			AgClinicalMobileUtil.getSiteListFromServer();
+		});
+		$ ( document ).bind('pageloaderror', aglite.Mobile.handleError);
+		aglite.Mobile.hideWindows();
+	</script>
+	
+	</head> 
+<body> 
+<div data-role="page" id="aglite_3__1__1__25" data-theme="d" data-pageName="">
+		<script>
+		var mobileReqKey = "mobile";
+		var recordId = "";
+		pageOwnerVersion = AgClinicalMobileUtil.version;
+		var pageEncodeVersion =  AgClinicalMobileUtil.encodeVersion ;
+		var menuName = "home";
+		var pageName =  "$pageName" ;
+		prevMenus = [];
+		document.title = '';
+	</script>
+	<div data-role="header" data-position="fixed" data-theme="b" style="min-height:34px;">
+		<h1>
+			agClinical
+		</h1>
+		<div style="float:right;padding-right:4px;position:absolute;top:2px;right:5px;">
+			<a href="javascript:void(0);"><img title="Options" id="settingsBt" class="agl-mobile-options" src="../images/s.gif" /></a>
+		</div>
+		<!--<div style="text-align:center;">
+			<label>agClinical</label>
+		</div>-->
+		<div style="text-align: center;float:left;position:absolute;top:2px;">
+			<a href="./home.html" data-ajax="false"><img title="Home" id="agl-mobile-home" class="agl-mobile-home" src="../images/s.gif"/></a>
+		</div>
+	</div>
+	<div data-role="content" id="main-base">
+				
+	</div><!-- /content -->
+	<div data-role="footer" data-position="fixed" data-theme="b" id="ag-footer">
+	</div><!-- /footer -->
+</div>
+</body>
+</html>

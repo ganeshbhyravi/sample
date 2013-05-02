@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html> 
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/jquery-mobile.css" />
+	<link rel="stylesheet" type="text/css" href="../css/aglite-mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/application-mobile.css" />
+
+     <script type="text/javascript" src="../js/lib/jquery.js"></script>
+     <script type="text/javascript" src="../js/lib/jquery-mobile.js"></script>
+     <script type="text/javascript" src="../js/lib/aglite-mobile-base.js"></script>
+     <script type="text/javascript" src="../js/lib/datenumbervalidation.js"></script>
+	 <script type="text/javascript" src="../js/aglite-mobile-offline.js"></script>
+	 <script src="../js/main.js"></script>
+
+	<script>
+		var platformVersion = AgClinicalMobileUtil.platformVersion;
+		var pageOwnerVersion = AgClinicalMobileUtil.version;
+		var contextPath = AgClinicalMobileUtil.contextPath;
+		var currentMenu = "home";
+		var prevMenus = [];
+		var userDateFormat = 'n/j/y';
+        var userDateTimeSeparator = ' ';
+        var userNumberFormat = '0,000.00';
+        var userTimeFormat = 'g:i A';
+		jQuery.support.cors = true;
+		jQuery.ajaxSetup ({
+            cache: true
+        });
+		
+	</script>
+	
+	</head> 
+<body> 
+<div data-role="dialog" id="about" data-theme="d" data-pageName="">
+		<script>
+		var mobileReqKey = "mobile";
+		var recordId = "";
+		pageOwnerVersion = AgClinicalMobileUtil.version;
+		var pageEncodeVersion =  AgClinicalMobileUtil.encodeVersion ;
+		var menuName = "home";
+		var pageName =  "$pageName" ;
+		prevMenus = [];
+		document.title = '';
+		$(function(){
+			$('#about-pv').html(AgClinicalMobileUtil.platformVersion);
+			$('#about-apps').html(AgClinicalMobileUtil.version);
+		});
+	</script>
+	<div data-role="header" data-position="fixed" data-theme="b" style="min-height:34px;">
+		<h1>
+			About
+		</h1>
+	</div>
+	<div data-role="content" id="main-base">
+		<center>
+<table width= "90%" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+    <tbody>
+        <tr>
+        <td>
+            <div class="ag-about-label">Platform Version</div>
+            <div class="ag-about-text" id="about-pv"></div>
+            <div class="ag-about-label">Registered Applications</div>
+			<div class="ag-about-text" id="about-apps"></div>
+		</td>
+        </tr>
+	</tbody>
+</table></center>
+	</div><!-- /content -->
+	<div data-role="footer" data-position="fixed" data-theme="b" id="ag-footer">
+	</div><!-- /footer -->
+</div>
+</body>
+</html>
