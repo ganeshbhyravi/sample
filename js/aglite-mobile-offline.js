@@ -73,13 +73,13 @@ aglite.Mobile.OffLine = {
 	},
 	createAndShowLoginPage: function(loginCallBack) {
 		if ($('#login').length == 0) {
-			var html = '<div data-role="dialog" id="login" data-theme="d"><div data-role="header" data-position="fixed" data-theme="c"><h3>Login</h3></div><div data-role="content" class="content"><center><table style="width:90%;"><tbody align="center"><tr><td><div style="margin: 0pt auto; text-align: center;"><img src="../images/logo.png"></img></div></td></tr><tr><td><div style="width:85%;" align="center"><div data-role="fieldcontain" class="ui-hide-label" style="border-bottom-width: 0;"><label for="userNameTxt" class="ui-hidden-accessible">User Name:</label><input type="text" name="name" id="userNameTxt" value=""  placeholder="User Name"/></div><div data-role="fieldcontain" class="ui-hide-label" style="border-bottom-width: 0;"><label for="passwordTxt" class="ui-hidden-accessible">Password: </label><input type="password" name="passwordTxt" id="passwordTxt" value=""  placeholder="Password"/><input id="force" type="hidden" value="false" /></div><a data-role="button" data-theme="b" data-inline="true" class="ag-btn" id="loginBtn">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;</a><br/></div></td></tr></tbody></table></center></div><div data-role="footer" data-position="fixed"></div></div>';
+			var html = '<div data-role="page" id="login" data-theme="b" data-add-back-btn="true"><div data-role="header" data-position="fixed" data-theme="b"><h3>Login To AgClinical online application</h3></div><div data-role="content" class="content"><center><table style="width:90%;"><tbody align="center"><tr><td><div style="width:85%;" align="center"><div data-role="fieldcontain" class="ui-hide-label" style="border-bottom-width: 0;"><label for="userNameTxt" class="ui-hidden-accessible">User Name:</label><input type="text" name="name" id="userNameTxt" value=""  placeholder="User Name"/></div><div data-role="fieldcontain" class="ui-hide-label" style="border-bottom-width: 0;"><label for="passwordTxt" class="ui-hidden-accessible">Password: </label><input type="password" name="passwordTxt" id="passwordTxt" value=""  placeholder="Password"/><input id="force" type="hidden" value="false" /></div><a data-role="button" data-theme="b" data-inline="true" class="ag-btn" id="loginBtn">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;</a><br/></div></td></tr></tbody></table></center></div><div data-role="footer" data-position="fixed"></div></div>';
 			$('body').append(html);
 			$('#userNameTxt, #passwordTxt').textinput();	
 			$.mobile.initializePage();
 			$('#loginBtn').click(aglite.Mobile.OffLine.doLogin);
 		}
-		$.mobile.changePage("#login", "pop", false, true);
+		$.mobile.changePage("#login", "page", false, true);
 		aglite.Mobile.hideLoadMask();
 		//$('#login div[data-role="content"]').page().show();
 		$('#login div[data-role="content"]').show();
