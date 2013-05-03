@@ -215,7 +215,7 @@ agClinical.util = {
 		var page = $(":jqmData(role='page'):visible");
 		if (!t.data('created')) {
 			var listView = '<ul data-role="listview" data-theme="c" data-dividertheme= "b" class="hidden-listview ag-float-window" id="settings" data-type="window">'
-				+ '<li><a href="./about.html" data-transition="pop" >About</a></li>' 
+				+ '<li><a href="./about.html" data-transition="pop" >About111</a></li>' 
 				+ '<li><a id="logout">Logout</a></li>' 
 				+ '</ul>';
 			listView = $(listView);
