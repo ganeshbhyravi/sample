@@ -207,6 +207,7 @@ agClinical.util = {
 	},
 	attachOptionWindow: function(page) {
 		var settingsBt = page.find('#settingsBt');
+		settingsBt.unbind('vclick', AgClinicalMobileUtil.createOptions);
 		settingsBt.bind('vclick', AgClinicalMobileUtil.createOptions);
 	},
 	createOptions: function() {
