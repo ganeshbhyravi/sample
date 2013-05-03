@@ -30,12 +30,12 @@
 		jQuery.ajaxSetup ({
             cache: true
         });
-		
+		alert('hi');
 	</script>
 	
 	</head> 
 <body> 
-<div data-role="dialog" id="about" data-theme="d" data-pageName="">
+<div data-role="page" id="about" data-theme="b" data-pageName="" data-add-back-btn="true">
 		<script>
 		var mobileReqKey = "mobile";
 		var recordId = "";
@@ -46,7 +46,6 @@
 		prevMenus = [];
 		document.title = '';
 		$(function(){
-			$('#about-pv').html(AgClinicalMobileUtil.platformVersion);
 			$('#about-apps').html(AgClinicalMobileUtil.version);
 		});
 	</script>
@@ -61,10 +60,10 @@
     <tbody>
         <tr>
         <td>
-            <div class="ag-about-label">Platform Version</div>
-            <div class="ag-about-text" id="about-pv"></div>
-            <div class="ag-about-label">Registered Applications</div>
+            <div class="ag-about-label">Clinical Offline application</div>
 			<div class="ag-about-text" id="about-apps"></div>
+			<hr/>
+            <div class="ag-about-text" id="about-pv">Copyright © 2013, ArisGlobal</div>
 		</td>
         </tr>
 	</tbody>
